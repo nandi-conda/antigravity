@@ -18,4 +18,4 @@ jobs:
         env:
           PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
         run: |
-          rattler-build upload prefix --channel nandi-testing --skip-existing output/**/*.conda
+          rattler-build upload prefix --channel nandi-testing --force output/**/*.conda
