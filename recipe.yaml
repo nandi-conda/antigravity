@@ -41,8 +41,6 @@ requirements:
     - bash
   run:
     - bash
-    - xorg-libx11
-    - xorg-libxkbfile
 
 tests:
   - script:
