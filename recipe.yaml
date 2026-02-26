@@ -37,6 +37,7 @@ requirements:
     - binutils
     - tar
     - xz
+    - menuinst
   host:
     - bash
   run:
