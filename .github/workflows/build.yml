@@ -28,5 +28,4 @@ jobs:
       - name: Upload to prefix.dev
         env:
           PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
-        run: |
-          rattler-build upload prefix --channel nandi-testing --force output/**/*.conda
+        run: rattler-build upload prefix --channel nandi-testing --force output/**/*.conda
