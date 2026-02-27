@@ -46,9 +46,10 @@ build:
     mkdir -p $PREFIX/share/icons/hicolor/512x512/apps
     cp usr/share/antigravity/resources/app/resources/linux/code.png $PREFIX/share/icons/hicolor/512x512/apps/antigravity.png
 
-    # Copy post-link and pre-unlink scripts to prefix
+    # Copy post-link and pre-unlink scripts to prefix and make executable
     cp post-link.sh $PREFIX/
     cp pre-unlink.sh $PREFIX/
+    chmod +x $PREFIX/post-link.sh $PREFIX/pre-unlink.sh
 
 requirements:
   build:
