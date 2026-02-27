@@ -51,6 +51,26 @@ build:
     cp pre-unlink.sh $PREFIX/
     chmod +x $PREFIX/post-link.sh $PREFIX/pre-unlink.sh
 
+    # Create menuinst configuration
+    mkdir -p $PREFIX/Menu
+    cat << 'EOF' > $PREFIX/Menu/antigravity.json
+    {
+      "$schema": "https://raw.githubusercontent.com/conda/menuinst/main/menuinst/schema.json",
+      "menu_name": "Antigravity",
+      "menu_items": [
+        {
+          "name": "Antigravity",
+          "description": "Experience liftoff",
+          "icon": "{{ PREFIX }}/share/icons/hicolor/512x512/apps/antigravity.png",
+          "command": ["{{ PREFIX }}/bin/antigravity"],
+          "platforms": {
+            "linux": {}
+          }
+        }
+      ]
+    }
+    EOF
+
 requirements:
   build:
     - binutils
@@ -60,8 +80,9 @@ requirements:
     - bash
   run:
     - bash
-    - menuinst
+    - menuinst >=2
 
 tests:
   - script:
       - "ls -la $PREFIX/bin/antigravity"
+      - "test -f $PREFIX/Menu/antigravity.json"
