@@ -19,9 +19,6 @@ source:
     then:
       url: https://us-central1-apt.pkg.dev/projects/${{ name }}-auto-updater-dev/pool/${{ name }}-debian/${{ name }}_${{ version }}-${{ arm64minor }}_arm64_${{ arm64check }}.deb
       sha256: db662052b943cf91a347a08f2f62198f4c0dccc228baa0c6d326bb0c4df10bce
-  - path: post-link.sh
-  - path: pre-unlink.sh
-  - path: menu/antigravity.desktop
 
 build:
   number: 0
@@ -44,11 +41,9 @@ build:
     mkdir -p $PREFIX/share/icons/hicolor/512x512/apps
     cp usr/share/antigravity/resources/app/resources/linux/code.png $PREFIX/share/icons/hicolor/512x512/apps/antigravity.png
 
-post-link:
-  script: bash post-link.sh
-
-pre-unlink:
-  script: bash pre-unlink.sh
+    # Copy post-link and pre-unlink scripts to prefix
+    cp post-link.sh $PREFIX/
+    cp pre-unlink.sh $PREFIX/
 
 requirements:
   build:
