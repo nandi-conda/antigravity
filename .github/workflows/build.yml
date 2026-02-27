@@ -14,11 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: prefix-dev/rattler-build-action@v0.2.34
-        with:
-          recipe-path: recipe.yaml
+      - name: Install rattler-build
+        run: |
+          arch=$(uname -m)
+          if [ "$arch" = "arm64" ]; then arch="aarch64"; fi
+          curl -fsSL "https://github.com/prefix-dev/rattler-build/releases/latest/download/rattler-build-${arch}-unknown-linux-musl" \
+            -o /usr/local/bin/rattler-build
+          chmod +x /usr/local/bin/rattler-build
+      - name: Build package
+        run: rattler-build build --recipe recipe.yaml
       - name: Upload to prefix.dev
         if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         env:
           PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
-        run: rattler-build upload prefix --channel nandi-testing output/**/*.conda
+        run: rattler-build upload prefix --channel nandi-testing --force output/**/*.conda
