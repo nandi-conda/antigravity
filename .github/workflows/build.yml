@@ -21,4 +21,4 @@ jobs:
         if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         env:
           PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
-        run: rattler-build upload prefix --channel nandi-testing --force output/**/*.conda
+        run: rattler-build upload prefix --channel nandi-testing output/**/*.conda
