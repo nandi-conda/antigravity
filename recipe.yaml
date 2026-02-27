@@ -43,8 +43,12 @@ build:
     mkdir -p $PREFIX/share/applications
     cp -r menu/*.desktop $PREFIX/share/applications/
 
+    # Install icon to both pixmaps (legacy) and hicolor (modern) locations
+    mkdir -p $PREFIX/share/pixmaps
+    cp usr/share/pixmaps/antigravity.png $PREFIX/share/pixmaps/antigravity.png
+
     mkdir -p $PREFIX/share/icons/hicolor/512x512/apps
-    cp usr/share/antigravity/resources/app/resources/linux/code.png $PREFIX/share/icons/hicolor/512x512/apps/antigravity.png
+    cp usr/share/pixmaps/antigravity.png $PREFIX/share/icons/hicolor/512x512/apps/antigravity.png
 
     # Copy post-link and pre-unlink scripts to prefix and make executable
     cp post-link.sh $PREFIX/
@@ -61,7 +65,7 @@ build:
         {
           "name": "Antigravity",
           "description": "Experience liftoff",
-          "icon": "{{ PREFIX }}/share/icons/hicolor/512x512/apps/antigravity.png",
+          "icon": "{{ PREFIX }}/share/pixmaps/antigravity.png",
           "command": ["{{ PREFIX }}/bin/antigravity"],
           "platforms": {
             "linux": {}
