@@ -1,7 +1,10 @@
-name: Build and Upload Conda Package
+name: Build and Publish Conda Package
 
 on:
   push:
+    branches:
+      - main
+      - master
     tags:
       - "v*"
   pull_request:
@@ -19,7 +22,7 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
     steps:
       - uses: actions/download-artifact@v4
         with:
