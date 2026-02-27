@@ -28,6 +28,7 @@ jobs:
         with:
           name: package
           path: output
+      - uses: prefix-dev/rattler-build-action@v0.2.34
       - name: Upload to prefix.dev
         env:
           PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
