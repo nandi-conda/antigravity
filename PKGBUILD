@@ -2,11 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=antigravity
-pkgver=1.19.4
-_x86minor=1772005678
-_arm64minor=1772005682
-_x86check=93efa9b6642627b1b0009b5681c6513a
-_arm64check=ca9e0f3a796486916ccbad3f7456bb7c
+pkgver=1.19.6
 pkgrel=1
 pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era.'
 arch=(aarch64 x86_64)
@@ -16,12 +12,16 @@ _electron=electron39
 depends=(bash $_electron libx11 libxkbfile)
 makedepends=(jq)
 options=(!strip !debug)
+_x86_64_timestamp=1772152296
+_aarch64_timestamp=1772152278
+_x86_64_md5sum=4adf927f23143e77a9a759c97e46fe6f
+_aarch64_md5sum=f3cf3811643cf91127edc038a2b4257d
 source=($pkgname.sh)
-source_aarch64=("Antigravity-$pkgver-aarch64.deb::https://us-central1-apt.pkg.dev/projects/$pkgname-auto-updater-dev/pool/$pkgname-debian/${pkgname}_$pkgver-${_arm64minor}_arm64_${_arm64check}.deb")
-source_x86_64=("Antigravity-$pkgver-x86_64.deb::https://us-central1-apt.pkg.dev/projects/$pkgname-auto-updater-dev/pool/$pkgname-debian/${pkgname}_$pkgver-${_x86minor}_amd64_${_x86check}.deb")
-sha256sums=('06a7836147fdb3006d469c880d4243c9b0bb0f691bc4d8c9a19829e722ed98ee')
-sha256sums_aarch64=('db662052b943cf91a347a08f2f62198f4c0dccc228baa0c6d326bb0c4df10bce')
-sha256sums_x86_64=('c9eb7d8f88588ebbb783af02b112a70a2ec26155938746d09f77fd9f7f20fcca')
+source_aarch64=("Antigravity-$pkgver-aarch64.deb::https://us-central1-apt.pkg.dev/projects/$pkgname-auto-updater-dev/pool/$pkgname-debian/${pkgname}_$pkgver-${_aarch64_timestamp}_arm64_${_aarch64_md5sum}.deb")
+source_x86_64=("Antigravity-$pkgver-x86_64.deb::https://us-central1-apt.pkg.dev/projects/$pkgname-auto-updater-dev/pool/$pkgname-debian/${pkgname}_$pkgver-${_x86_64_timestamp}_amd64_${_x86_64_md5sum}.deb")
+sha256sums=('e87279c0e90c05ea12df6a5a58f0a6a51b76e3e2f3b0d6411085a1cd981fe5b2')
+sha256sums_aarch64=('26c096eef1bd18799665fa1784b5b564214059e6a6a227cf5263c2ab9f4301b4')
+sha256sums_x86_64=('04da15e1db2b7bd9c39708d62a2a42fc4e42ceafd977aac9a638c771117a3d7b')
 
 prepare() {
     tar -xpf data.tar.xz
