@@ -25,23 +25,35 @@ build:
   script: |
     ar x *.deb
     tar -xf data.tar.xz
-    
+
     mkdir -p $PREFIX/share/antigravity
     cp -r usr/share/antigravity/* $PREFIX/share/antigravity/
-    
+
     mkdir -p $PREFIX/bin
     ln -s ../share/antigravity/bin/antigravity $PREFIX/bin/antigravity
+
+    mkdir -p $PREFIX/share/menu
+    cp -r menu/*.desktop $PREFIX/share/menu/
+
+    mkdir -p $PREFIX/share/applications
+    cp -r menu/*.desktop $PREFIX/share/applications/
+
+    mkdir -p $PREFIX/share/icons/hicolor/512x512/apps
+    cp usr/share/antigravity/resources/app/resources/linux/code.png $PREFIX/share/icons/hicolor/512x512/apps/antigravity.png
+
+  post-link: post-link.sh
+  pre-unlink: pre-unlink.sh
 
 requirements:
   build:
     - binutils
     - tar
     - xz
-    - menuinst
   host:
     - bash
   run:
     - bash
+    - menuinst
 
 tests:
   - script:
