@@ -1,10 +1,10 @@
 context:
   name: antigravity
-  version: "1.19.4"
-  x86minor: "1772005678"
-  arm64minor: "1772005682"
-  x86check: "93efa9b6642627b1b0009b5681c6513a"
-  arm64check: "ca9e0f3a796486916ccbad3f7456bb7c"
+  version: "1.19.6"
+  x86minor: "1772152296"
+  arm64minor: "1772152278"
+  x86check: "4adf927f23143e77a9a759c97e46fe6f"
+  arm64check: "f3cf3811643cf91127edc038a2b4257d"
 
 package:
   name: ${{ name }}
@@ -14,11 +14,11 @@ source:
   - if: target_platform == "linux-64"
     then:
       url: https://us-central1-apt.pkg.dev/projects/${{ name }}-auto-updater-dev/pool/${{ name }}-debian/${{ name }}_${{ version }}-${{ x86minor }}_amd64_${{ x86check }}.deb
-      sha256: c9eb7d8f88588ebbb783af02b112a70a2ec26155938746d09f77fd9f7f20fcca
+      sha256: 04da15e1db2b7bd9c39708d62a2a42fc4e42ceafd977aac9a638c771117a3d7b
   - if: target_platform == "linux-aarch64"
     then:
       url: https://us-central1-apt.pkg.dev/projects/${{ name }}-auto-updater-dev/pool/${{ name }}-debian/${{ name }}_${{ version }}-${{ arm64minor }}_arm64_${{ arm64check }}.deb
-      sha256: db662052b943cf91a347a08f2f62198f4c0dccc228baa0c6d326bb0c4df10bce
+      sha256: 26c096eef1bd18799665fa1784b5b564214059e6a6a227cf5263c2ab9f4301b4
   # Local files needed for the build
   - path: menu
     target_directory: menu
